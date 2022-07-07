@@ -263,13 +263,13 @@ int main(int argc, FAR char *argv[])
       errval = 2;
       goto errout;
     }
-
   /* Now loop the appropriate number of times, displaying the collected
    * ADC samples.
    */
 
   for (;;)
   {
+    
     /* Flush any output before the loop entered or from the previous pass
      * through the loop.
      */
@@ -278,7 +278,8 @@ int main(int argc, FAR char *argv[])
 
 #ifdef CONFIG_EXAMPLES_ADC_SWTRIG
     /* Issue the software trigger to start ADC conversion */
-
+    ret = ioctl(fd, ANIOC_TRIGGER, 0);
+    ret = ioctl(fd, ANIOC_TRIGGER, 0);
     ret = ioctl(fd, ANIOC_TRIGGER, 0);
     if (ret < 0)
       {
