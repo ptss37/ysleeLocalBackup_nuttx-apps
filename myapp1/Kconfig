@@ -1,0 +1,29 @@
+#
+# For a description of the syntax of this configuration file,
+# see the file kconfig-language.txt in the NuttX tools repository.
+#
+
+config MYAPP1
+	tristate "my app"
+	default n
+	---help---
+		Enable the my app
+
+if MYAPP1
+
+config MYAPP1_PROGNAME
+	string "Program name"
+	default "hello"
+	---help---
+		This is the name of the program that will be used when the NSH ELF
+		program is installed.
+
+config MYAPP1_PRIORITY
+	int "My app task priority"
+	default 100
+
+config MYAPP1_STACKSIZE
+	int "My app stack size"
+	default DEFAULT_TASK_STACKSIZE
+
+endif
