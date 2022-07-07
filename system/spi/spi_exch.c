@@ -150,7 +150,7 @@ int spicmd_exch(FAR struct spitool_s *spitool, int argc, FAR char **argv)
   seq.ntrans = 1;
   seq.trans = &trans;
 
-  trans.deselect = true;
+  trans.deselect = false;
 #ifdef CONFIG_SPI_CMDDATA
   trans.cmd = spitool->command;
 #endif
