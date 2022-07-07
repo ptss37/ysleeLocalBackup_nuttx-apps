@@ -1,9 +1,8 @@
 ############################################################################
-# apps/canutils/libcanard/Make.defs
-# Adds selected applications to apps/ build
+# apps/examples/hello/Makefile
 #
-#   Copyright (C) 2016 Omni Hoverboards Inc. All rights reserved.
-#   Author: Paul Alexander Patience <paul-a.patience@polymtl.ca>
+#   Copyright (C) 2008, 2010-2013 Gregory Nutt. All rights reserved.
+#   Author: Gregory Nutt <gnutt@nuttx.org>
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions
@@ -34,6 +33,26 @@
 #
 ############################################################################
 
-ifeq ($(CONFIG_CANUTILS_LIBCANARD),y)
-CONFIGURED_APPS += $(APPDIR)/canutils/libcanard
-endif
+include $(APPDIR)/Make.defs
+
+# Hello, World! built-in application info
+
+PROGNAME  = myled
+PRIORITY  = 100
+STACKSIZE = CONFIG_DEFAULT_TASK_STACKSIZE
+MODULE    = $(CONFIG_MY_LED)
+
+# Hello, World! Example
+
+MAINSRC = main.c
+
+include $(APPDIR)/Application.mk
+CFLAGS  += -I $(TOPDIR)/../nuttx/arch/arm/src/common
+CFLAGS  += -I $(TOPDIR)/../nuttx/arch/arm/src/common
+CFLAGS  += -I $(TOPDIR)/../nuttx/include
+CFLAGS  += -I $(TOPDIR)/../nuttx/include/arch/chip
+CFLAGS  += -I $(TOPDIR)/../nuttx/include/arch/board
+CFLAGS  += -I $(TOPDIR)/../nuttx/include/nuttx/leds
+CFLAGS  += -I $(TOPDIR)/../nuttx/arch/arm/src/s32k1xx
+
+
